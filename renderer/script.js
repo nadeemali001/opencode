@@ -13,7 +13,7 @@ function loadSavedTheme() {
     const data = JSON.parse(fs.readFileSync(configPath, 'utf8'));
     if (data.selected && window.THEMES[data.selected]) return data.selected;
   } catch (_) {}
-  return 'Dark (Default)';
+  return window.THEME_NAMES[0];
 }
 
 function saveTheme(name) {
