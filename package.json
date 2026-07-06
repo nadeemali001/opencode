@@ -1,0 +1,33 @@
+{
+  "name": "opencode-desktop",
+  "version": "1.0.0",
+  "description": "Desktop app for opencode",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "dependencies": {
+    "node-pty": "^1.0.0",
+    "xterm": "^5.3.0",
+    "xterm-addon-fit": "^0.8.0"
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.opencode.desktop",
+    "productName": "Opencode Desktop",
+    "files": [
+      "main.js",
+      "renderer/**/*",
+      "icon.icns"
+    ],
+    "mac": {
+      "icon": "icon.icns",
+      "target": "dmg",
+      "category": "public.app-category.developer-tools"
+    }
+  }
+}
