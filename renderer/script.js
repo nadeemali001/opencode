@@ -40,12 +40,22 @@ const term = new Terminal({
 const fitAddon = new FitAddon();
 term.loadAddon(fitAddon);
 
-function applyTheme(name) {
+function applyTheme(name, initial) {
   const t = window.THEMES[name];
   if (!t) return;
   term.options.theme = t.terminal;
-  const el = document.getElementById('terminal');
-  if (el) el.style.background = t.terminal.background;
+  const termEl = document.getElementById('terminal');
+  if (termEl) {
+    termEl.style.background = t.terminal.background;
+    const xterm = termEl.querySelector('.xterm');
+    if (xterm) {
+      xterm.style.background = t.terminal.background;
+      const vp = xterm.querySelector('.xterm-viewport');
+      if (vp) vp.style.background = t.terminal.background;
+      const screen = xterm.querySelector('.xterm-screen');
+      if (screen) screen.style.background = t.terminal.background;
+    }
+  }
   const bar = document.getElementById('status-bar');
   bar.style.background = t.ui.bar;
   document.getElementById('status-indicator').style.background = t.ui.indicator;
